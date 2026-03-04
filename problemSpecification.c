@@ -13,7 +13,7 @@ int main() {
     // I can't find the empircal ones
     printf("Maximum value of a counting semaphore (empirical): %d\n", semncnt);
     printf("Maximum size of a shared memory segment (empirical): %d\n", shmget);
-    int page = sysconf(PAGESIZE)
+    int page = sysconf(PAGESIZE);
     printf("Page size in bytes (dynamic): %d\n", page);
     long six = sysconf(_SC_PHYS_PAGES);
     printf("Physical pages in a system (dynamic): %ld\n", six);
@@ -21,10 +21,10 @@ int main() {
     printf("Maximum number of processes per user (dynamic): %ld\n", seven);
     int filesize = sysconf(FILESIZEBITS)
     printf("Maximum filesize in bytes (dynamic): %d\n", filesize);
-    int open = sysconf(SC_OPEN_MAX)
+    int open = sysconf(SC_OPEN_MAX);
     printf("Maximum number of open files, hard limit (dynamic): %d\n", open);
     printf("Maximum number of open files, soft limit (dynamic): \n");
-    int clock = clock_getres(clockid)
+    int clock = clock_getres(clockid);
     printf("Clock resolution in milliseconds (dynamic): %d\n", clock);
     return 0;
 }
