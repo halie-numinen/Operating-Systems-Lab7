@@ -6,6 +6,7 @@
 #include <sys/sem.h>
 #include <sys/resource.h> //getrlimit
 #include <time.h>
+#include <semaphore.h>
 
 // use the online man pages to find these (I copied the discription in the lab and searched the man pages)
 int main() {
