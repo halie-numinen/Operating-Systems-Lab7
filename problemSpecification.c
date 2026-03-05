@@ -7,12 +7,24 @@
 #include <sys/resource.h> //getrlimit
 #include <sys/shm.h>
 #include <time.h>
+#include <string.h>
+#include <semaphore.h>
 
 int main() {
+    sem_t sem;
+    int value = 1;
+    int semaphoreValue = sem_init(&sem, 0, value);
+    int lastValue = value;
+    while (semaphoreValue == 0) {
+        lastValue = value;
+        sem_destroy(&sem);
+        value++;
+        semaphoreValue = sem_init(&sem, 0, value);
+    }
     printf("1. Maximum number of semaphores per process (static): %d\n", _POSIX_SEM_NSEMS_MAX);
     printf("2. Maximum value of a counting semaphore (static): %d\n", SEM_VALUE_MAX);
-    long three = sysconf(SETVAL);
-    printf("3. Maximum value of a counting semaphore (empirical): %ld\n", three);
+    // long three = sysconf(SETVAL);
+    printf("3. Maximum value of a counting semaphore (empirical): %d\n", lastValue);
     //long four = sysconf(_SC_SHMMAX) not working;
     //printf("4. Maximum size of a shared memory segment (empirical): %ld\n", four); not working
     long five = sysconf(_SC_PAGE_SIZE);
