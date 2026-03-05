@@ -9,8 +9,8 @@
 
 // use the online man pages to find these (I copied the discription in the lab and searched the man pages)
 int main() {
-    printf("Maximum number of semaphores per process (static): %d\n", _POSIX_SEM_NSEMS_MAX);
-    printf("Maximum value of a counting semaphore (static): %d\n", SEM_VALUE_MAX);
+    printf("1. Maximum number of semaphores per process (static): %d\n", _POSIX_SEM_NSEMS_MAX);
+    printf("2. Maximum value of a counting semaphore (static): %d\n", SEM_VALUE_MAX);
     // I can't find the empircal ones
     printf("3. Maximum value of a counting semaphore (empirical): %d\n", );
     //long four = sysconf(_SC_SHMMAX) not working;
