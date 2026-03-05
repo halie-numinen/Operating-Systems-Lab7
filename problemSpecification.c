@@ -5,26 +5,28 @@
 #include <sys/param.h>
 #include <sys/sem.h>
 #include <sys/resource.h> //getrlimit
+#include <time.h>
 
 // use the online man pages to find these (I copied the discription in the lab and searched the man pages)
 int main() {
-    printf("Maximum number of semaphores per process (static): %d\n", _POSIX_SEM_NSEMS_MAX);
-    printf("Maximum value of a counting semaphore (static): %d\n", _POSIX_SEM_VALUE_MAX);
+    printf("1. Maximum number of semaphores per process (static): %d\n", _POSIX_SEM_NSEMS_MAX);
+    printf("2. Maximum value of a counting semaphore (static): %d\n", SEM_VALUE_MAX);
     // I can't find the empircal ones
-    printf("Maximum value of a counting semaphore (empirical): %d\n", semncnt);
-    printf("Maximum size of a shared memory segment (empirical): %d\n", shmget);
-    int page = sysconf(PAGESIZE);
-    printf("Page size in bytes (dynamic): %d\n", page);
+    printf("3. Maximum value of a counting semaphore (empirical): %d\n", );
+    //long four = sysconf(_SC_SHMMAX) not working;
+    //printf("4. Maximum size of a shared memory segment (empirical): %ld\n", four); not working
+    long five = sysconf(_SC_PAGE_SIZE);
+    printf("5. Page size in bytes (dynamic): %ld\n", five);
     long six = sysconf(_SC_PHYS_PAGES);
-    printf("Physical pages in a system (dynamic): %ld\n", six);
+    printf("6. Physical pages in a system (dynamic): %ld\n", six);
     long seven = sysconf(_SC_CHILD_MAX);
-    printf("Maximum number of processes per user (dynamic): %ld\n", seven);
-    int filesize = sysconf(FILESIZEBITS)
-    printf("Maximum filesize in bytes (dynamic): %d\n", filesize);
-    int open = sysconf(SC_OPEN_MAX);
-    printf("Maximum number of open files, hard limit (dynamic): %d\n", open);
-    printf("Maximum number of open files, soft limit (dynamic): \n");
-    int clock = clock_getres(clockid);
-    printf("Clock resolution in milliseconds (dynamic): %d\n", clock);
+    printf("7. Maximum number of processes per user (dynamic): %ld\n", seven);
+    long eight = pathconf(".", _PC_FILESIZEBITS);    
+    printf("8. Maximum filesize in bytes (dynamic): %ld\n", eight);
+    //printf("9. Maximum number of open files, hard limit (dynamic): %ld\n", ); not working
+    long ten = sysconf(_SC_OPEN_MAX);
+    printf("10. Maximum number of open files, soft limit (dynamic): %ld\n", ten);
+    long eleven = sysconf(CLOCK_REALTIME);    
+    printf("11. Clock resolution in milliseconds (dynamic): %ld\n", eleven);
     return 0;
 }
