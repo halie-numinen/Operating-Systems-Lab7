@@ -28,13 +28,5 @@ int main() {
     printf("10. Maximum number of open files, soft limit (dynamic): %ld\n", ten);
     long eleven = sysconf(CLOCK_REALTIME);    
     printf("11. Clock resolution in milliseconds (dynamic): %ld\n", eleven);
-    printf("Maximum number of processes per user (dynamic): %ld\n", seven);
-    int filesize = sysconf(FILESIZEBITS);
-    printf("Maximum filesize in bytes (dynamic): %d\n", filesize);
-    int open = sysconf(SC_OPEN_MAX);
-    printf("Maximum number of open files, hard limit (dynamic): %d\n", open);
-    printf("Maximum number of open files, soft limit (dynamic): \n");
-    int clock = clock_getres(clockid);
-    printf("Clock resolution in milliseconds (dynamic): %d\n", clock);
     return 0;
 }
